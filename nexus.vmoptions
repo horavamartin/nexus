@@ -1,5 +1,5 @@
--Xms${JAVA_MIN_MEM}
--Xmx${JAVA_MAX_MEM}
+-Xms128M
+-Xmx256M
 -XX:MaxDirectMemorySize=2G
 -XX:+UnlockDiagnosticVMOptions
 -XX:+UnsyncloadClass
