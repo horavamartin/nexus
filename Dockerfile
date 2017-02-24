@@ -15,8 +15,8 @@ FROM sonatype/nexus3:3.2.1
 
 MAINTAINER Martin Horava <horavamartin@gmail.com>
 
-ENV JAVA_MIN_MEM=128m \
-	JAVA_MAX_MEM=256m \
+ENV JAVA_MIN_MEM=1200m \
+	JAVA_MAX_MEM=1200m \
 	MAX_DIRECT_MEMORY_SIZE=2G
 
 COPY nexus.sh /opt/sonatype/nexus/bin/nexus.sh
