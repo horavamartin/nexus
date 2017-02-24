@@ -15,8 +15,21 @@ FROM sonatype/nexus3:3.2.1
 
 MAINTAINER Martin Horava <horavamartin@gmail.com>
 
-ENV JAVA_MAX_MEM=128m \
-	JAVA_MIN_MEM=256m
+ENV JAVA_MIN_MEM=128m \
+	JAVA_MAX_MEM=256m \
+	MAX_DIRECT_MEMORY_SIZE=2G
 
-COPY nexus.vmoptions /opt/sonatype/nexus/bin/nexus.vmoptions
+COPY nexus.sh /opt/sonatype/nexus/bin/nexus.sh
+
+WORKDIR ${NEXUS_HOME}/bin
 	
+USER root
+
+# Delete vmoptions file and prepare new
+RUN rm nexus.vmoptions && \
+	touch nexus.vmoptions && \
+	chmod o+w nexus.vmoptions
+
+USER nexus
+
+ENTRYPOINT sh nexus.sh
